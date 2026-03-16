@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /config.php
+Disallow: /install.php
+
+Sitemap: https://fuelupdate.kritantatech.com/sitemap.php
+
+# CTG Fuel Tracker - Chittagong Fuel Pump Tracker
+# Keywords: tel koi, ctg fuel update, Chittagong fuel pump
