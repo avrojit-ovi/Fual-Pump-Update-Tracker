@@ -4,6 +4,16 @@ A real-time fuel availability and price tracking system for Chattogram, Banglade
 
 ---
 
+## 📞 Quick Contact
+
+| Contact Method | Details |
+|---|---|
+| **Email** | 📧 [ovi.chy4041@gmail.com](mailto:ovi.chy4041@gmail.com) |
+| **Phone** | 📱 +880 1333 121292 |
+| **Facebook** | 📘 [facebook.com/avrojit.ovi](https://www.facebook.com/avrojit.ovi/) |
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -350,11 +360,16 @@ Response:
 
 ## 📞 Support & Contribution
 
-For bug reports, feature requests, or contributions:
+For bug reports, feature requests, contributions, or general inquiries:
 
-1. Contact the development team
-2. Provide detailed information about the issue
-3. Include screenshots or error messages when applicable
+**📧 Email:** [ovi.chy4041@gmail.com](mailto:ovi.chy4041@gmail.com)  
+**📱 Phone:** +880 1333 121292  
+**📘 Facebook:** [facebook.com/avrojit.ovi](https://www.facebook.com/avrojit.ovi/)
+
+Please provide:
+1. Detailed description of the issue or request
+2. Screenshots or error messages (if applicable)
+3. Your contact information for follow-up
 
 ---
 
@@ -363,7 +378,8 @@ For bug reports, feature requests, or contributions:
 **Avrojit Chowdhury Ovi**
 
 - 📘 Facebook: [facebook.com/avrojit.ovi](https://www.facebook.com/avrojit.ovi/)
-- 📧 Email: [Available upon request]
+- 📧 Email: [ovi.chy4041@gmail.com](mailto:ovi.chy4041@gmail.com)
+- 📱 Phone: +880 1333 121292
 - 🌐 Portfolio: [Links coming soon]
 
 ---
