@@ -1,90 +1,399 @@
 # CTG Fuel Tracker
-**Developed by:** Avrojit Chowdhury Ovi  
-**Facebook:** https://www.facebook.com/avrojit.ovi/
+
+A real-time fuel availability and price tracking system for Chattogram, Bangladesh. Built during the fuel crisis period to help citizens quickly locate fuel pumps with available stock and stay updated on current fuel prices.
 
 ---
 
-## ইনস্টলেশন গাইড (Installation Guide)
+## 📋 Table of Contents
 
-### ধাপ ১ — ফাইল আপলোড
-সব ফাইল আপনার hosting-এর `public_html` ফোল্ডারে আপলোড করুন।
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Developer](#developer)
 
-### ধাপ ২ — Database Config
-`config.php` ফাইলে আপনার database তথ্য দিন:
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'u594474618_fuelupdate');   // আপনার DB নাম
-define('DB_USER', 'u594474618_fuelupdate');   // আপনার username
-define('DB_PASS', 'Fuelupdate@108%');          // আপনার password
+---
+
+## 🎯 Overview
+
+**CTG Fuel Tracker** is a community-driven web application designed to address the fuel shortage crisis in Chattogram. The platform provides:
+
+- **Real-time Fuel Availability:** Track which pumps have fuel in stock
+- **Price Updates:** Compare fuel prices across different stations
+- **Community Reports:** Users can report fuel availability and shortages
+- **Map-based Interface:** Interactive map showing all fuel pump locations
+- **Admin Dashboard:** Manage pump information and moderate community reports
+
+This application was developed to empower citizens with accurate, up-to-date information during fuel scarcity, reducing waiting time and frustration.
+
+---
+
+## ✨ Key Features
+
+### Public Features (Available to All Users)
+
+- 🗺️ **Interactive Map View** - Display all fuel pumps with their locations
+- ⛽ **Fuel Status Check** - See real-time fuel availability at each pump
+- 💰 **Price Monitoring** - Track current fuel prices across all stations
+- 📝 **Price Suggestions** - Submit price updates (requires admin approval)
+- 🚨 **Report Issues** - Report fuel shortages or service problems
+- ➕ **Add New Pumps** - Contribute new pump locations with GPS coordinates
+- 📢 **Fuel Crisis Alerts** - Report critical fuel shortages in your area
+
+### Admin Dashboard Features
+
+- 📊 **Analytics Dashboard** - View statistics on total pumps, availability, daily reports
+- ✅ **Moderate Submissions** - Approve or reject price suggestions
+- 🏢 **Pump Management** - Add, edit, or remove fuel pump information
+- 📋 **Report Management** - Review and manage user-submitted reports
+- 👥 **User Management** - Create and manage admin accounts
+- 📈 **Historical Data** - Track fuel availability trends over time
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Backend** | PHP 8.0+ with PDO |
+| **Database** | MySQL 5.7+ / MariaDB |
+| **Frontend Map** | Leaflet.js + CartoDB Tiles |
+| **Styling** | Responsive CSS3 |
+| **JavaScript** | Vanilla JS (No Framework Required) |
+| **Server** | Apache 2.4+ with mod_rewrite |
+
+---
+
+## 📦 Installation Guide
+
+### Prerequisites
+
+- PHP 8.0 or higher
+- MySQL 5.7 or higher
+- Web hosting with SSH/FTP access
+- Domain with SSL certificate (recommended)
+
+### Step 1: Upload Files
+
+Upload all project files to your hosting provider's `public_html` directory using FTP or file manager.
+
 ```
-
-### ধাপ ৩ — Database Setup
-Browser-এ যান: `https://yoursite.com/install.php`  
-এটি সব table তৈরি করবে এবং sample data insert করবে।
-
-### ধাপ ৪ — Install ফাইল মুছুন ⚠️
-`install.php` ফাইলটি **অবশ্যই মুছে ফেলুন** নিরাপত্তার জন্য!
-
-### ধাপ ৫ — Admin Login
-`https://yoursite.com/admin/` এ যান।  
-**Default credentials:**
-- Username: `admin`
-- Password: `Admin@CTG2025`
-
-⚠️ প্রথম লগইনের পরেই পাসওয়ার্ড পরিবর্তন করুন!
-
----
-
-## ফিচার তালিকা
-
-### Public (সবার জন্য)
-- ✅ Map-এ সব fuel pump দেখা
-- ✅ প্রতিটি pump-এ তেলের অবস্থা ও দাম দেখা
-- ✅ তেলের দামের সাজেশন দেওয়া (Admin approval লাগবে)
-- ✅ যেকোনো pump-এ রিপোর্ট করা
-- ✅ নতুন pump যোগ করা (GPS location দিয়ে)
-- ✅ সিরিয়াল অবস্থা রিপোর্ট করা
-
-### Admin Dashboard
-- ✅ Dashboard stats (মোট পাম্প, তেল আছে/নেই, আজকের রিপোর্ট)
-- ✅ দামের সাজেশন approve/reject করা
-- ✅ Pump যোগ/সম্পাদনা/মুছে ফেলা
-- ✅ ব্যবহারকারী রিপোর্ট দেখা
-- ✅ Admin user যোগ করা ও ম্যানেজ করা
-
----
-
-## ফাইল স্ট্রাকচার
-```
-/
-├── index.php          ← মূল map পেজ
-├── config.php         ← Database config
-├── install.php        ← একবার চালান, তারপর মুছুন!
-├── .htaccess          ← Security rules
+public_html/
+├── index.php
+├── config.php
+├── install.php
+├── .htaccess
 ├── api/
-│   ├── stations.php   ← Stations API (GET)
-│   ├── add_station.php← Station যোগ করার API
-│   ├── report.php     ← Report submit API
-│   └── suggest_price.php← Price suggestion API
-└── admin/
-    ├── login.php      ← Admin login
-    ├── logout.php     ← Logout
-    ├── index.php      ← Dashboard
-    ├── stations.php   ← Pump management
-    ├── approve.php    ← Price approval
-    ├── reports.php    ← User reports
-    ├── users.php      ← Admin user management
-    └── _header.php    ← Common sidebar/header
+├── admin/
+└── ... (other files)
+```
+
+### Step 2: Configure Database Connection
+
+Edit the `config.php` file with your database credentials:
+
+```php
+<?php
+// Database Configuration
+define('DB_HOST', 'your_db_host');      // Usually 'localhost'
+define('DB_NAME', 'your_database_name'); // Database name provided by hosting
+define('DB_USER', 'your_db_username');   // Database username
+define('DB_PASS', 'your_db_password');   // Database password
+define('DB_CHARSET', 'utf8mb4');
+
+// Application Settings
+define('SITE_URL', 'https://yourdomain.com');
+define('ADMIN_EMAIL', 'admin@yourdomain.com');
+?>
+```
+
+**⚠️ Keep your database credentials secure. Never commit `config.php` to public repositories.**
+
+### Step 3: Run Installation
+
+1. Visit your domain: `https://yourdomain.com/install.php`
+2. The installation script will:
+   - Create required database tables
+   - Insert sample fuel pump data
+   - Set up admin account with temporary credentials
+3. Follow the on-screen instructions
+
+### Step 4: Delete Installation File
+
+**⚠️ Security Critical:** After installation completes, delete `install.php` from your server immediately.
+
+```bash
+# Via FTP: Delete install.php
+# Via SSH: rm public_html/install.php
+```
+
+### Step 5: Access Admin Dashboard
+
+Navigate to the admin panel:
+- URL: `https://yourdomain.com/admin/`
+- You will receive default credentials via email during setup
+- **Change your password immediately after first login**
+
+### Step 6: Initial Setup
+
+1. Update your organization details in settings
+2. Add or verify fuel pump locations
+3. Configure notification settings
+4. Create additional admin accounts if needed
+
+---
+
+## 🚀 Usage
+
+### For End Users
+
+1. **View Fuel Pumps:**
+   - Visit the home page to see the interactive map
+   - Click on any pump marker for detailed information
+
+2. **Check Fuel Availability:**
+   - Green marker = Fuel available
+   - Red marker = No fuel in stock
+   - Yellow marker = Limited stock
+
+3. **Submit Price Update:**
+   - Click "Suggest Price" on any pump
+   - Enter current price and fuel type
+   - Await admin approval (usually within 24 hours)
+
+4. **Report Issues:**
+   - Click "Report" on any pump
+   - Select issue type (out of stock, closed, etc.)
+   - Add optional comments
+   - Submit for admin review
+
+5. **Add New Pump:**
+   - Click "Add New Pump" button
+   - Enter pump details and GPS coordinates
+   - Submit for verification
+
+### For Administrators
+
+1. **Login:** Access `yourdomain.com/admin/`
+2. **Dashboard:** View real-time statistics and alerts
+3. **Manage Pumps:** CRUD operations on fuel stations
+4. **Moderate Content:** Approve/reject user submissions
+5. **Generate Reports:** Export fuel availability data
+
+---
+
+## 📁 Project Structure
+
+```
+CTG-Fuel-Tracker/
+│
+├── index.php                 # Main public page with map interface
+├── config.php               # Database and app configuration
+├── install.php              # Installation script (delete after setup)
+├── .htaccess                # Apache rewrite rules and security headers
+├── robots.txt               # Search engine guidelines
+├── sitemap.php              # Dynamic XML sitemap generation
+│
+├── api/                     # REST API endpoints
+│   ├── stations.php         # Get fuel pump listings (GET)
+│   ├── add_station.php      # Submit new pump (POST)
+│   ├── report.php           # Submit pump report (POST)
+│   └── suggest_price.php    # Submit price suggestion (POST)
+│
+├── admin/                   # Admin dashboard
+│   ├── login.php            # Admin authentication
+│   ├── logout.php           # Logout endpoint
+│   ├── index.php            # Main dashboard with analytics
+│   ├── stations.php         # Pump management (Create, Read, Update, Delete)
+│   ├── approve.php          # Price submission approval interface
+│   ├── reports.php          # View and manage user reports
+│   ├── users.php            # Admin user account management
+│   └── _header.php          # Common header/sidebar component
+│
+└── assets/                  # (If applicable)
+    ├── css/                 # Stylesheets
+    ├── js/                  # JavaScript files
+    └── images/              # Images and icons
 ```
 
 ---
 
-## Tech Stack
-- **Backend:** PHP 8+ with PDO
-- **Database:** MySQL 5.7+
-- **Map:** Leaflet.js + CartoDB tiles
-- **Frontend:** Vanilla HTML/CSS/JS (no framework needed)
+## 🔌 API Documentation
+
+### Public API Endpoints
+
+All API responses are in JSON format.
+
+#### Get All Fuel Pumps
+
+```
+GET /api/stations.php
+
+Response:
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Pump Name",
+      "latitude": 22.3569,
+      "longitude": 91.7832,
+      "fuel_available": 1,
+      "price_regular": 105.50,
+      "price_premium": 115.00,
+      "updated_at": "2026-03-17 10:30:00"
+    }
+  ]
+}
+```
+
+#### Submit New Fuel Pump
+
+```
+POST /api/add_station.php
+
+Parameters:
+{
+  "name": "Pump Name",
+  "latitude": 22.3569,
+  "longitude": 91.7832,
+  "phone": "01700000000"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Pump added successfully. Awaiting admin approval."
+}
+```
+
+#### Submit Pump Report
+
+```
+POST /api/report.php
+
+Parameters:
+{
+  "station_id": 1,
+  "report_type": "out_of_stock|closed|price_incorrect|other",
+  "description": "Optional details",
+  "reporter_phone": "01700000000"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Report submitted successfully."
+}
+```
+
+#### Submit Price Suggestion
+
+```
+POST /api/suggest_price.php
+
+Parameters:
+{
+  "station_id": 1,
+  "fuel_type": "regular|premium",
+  "price": 105.50,
+  "reporter_phone": "01700000000"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Price suggestion submitted for review."
+}
+```
 
 ---
 
-*CTG Fuel Tracker v1.0 — চট্টগ্রামের মানুষের জন্য তৈরি*
+## 🔐 Security Considerations
+
+1. **Database Credentials:** Store in environment variables or secure configuration files
+2. **Admin Access:** Use strong, unique passwords
+3. **Delete Installation File:** Always remove `install.php` after setup
+4. **Enable HTTPS:** Use SSL/TLS certificates for all connections
+5. **Regular Backups:** Maintain daily database backups
+6. **Update Logs:** Monitor admin actions through activity logs
+7. **Input Validation:** All user inputs are sanitized server-side
+
+---
+
+## 🐛 Troubleshooting
+
+### White Blank Page
+- Check PHP error logs
+- Verify database connection in `config.php`
+- Ensure all files are uploaded correctly
+
+### Database Connection Error
+- Verify credentials in `config.php`
+- Check if database server is running
+- Confirm database exists and is accessible
+
+### Map Not Loading
+- Ensure JavaScript is enabled
+- Check browser console for errors
+- Verify internet connection for Leaflet.js CDN
+
+### Admin Login Issues
+- Clear browser cookies
+- Check if `.htaccess` is properly configured
+- Verify PHP session support is enabled
+
+---
+
+## 📞 Support & Contribution
+
+For bug reports, feature requests, or contributions:
+
+1. Contact the development team
+2. Provide detailed information about the issue
+3. Include screenshots or error messages when applicable
+
+---
+
+## 👨‍💻 Developer
+
+**Avrojit Chowdhury Ovi**
+
+- 📘 Facebook: [facebook.com/avrojit.ovi](https://www.facebook.com/avrojit.ovi/)
+- 📧 Email: [Available upon request]
+- 🌐 Portfolio: [Links coming soon]
+
+---
+
+## 📜 License
+
+This project is developed specifically for the Chattogram community to address fuel availability during crisis situations. Usage and distribution rights are reserved.
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- All community members who contributed fuel availability data
+- The citizens of Chattogram for supporting this initiative
+- All volunteers who tested and provided feedback
+
+---
+
+## 📝 Version History
+
+| Version | Date | Notes |
+|---------|------|-------|
+| 1.0 | Mar 2026 | Initial release for fuel crisis management |
+
+---
+
+**Last Updated:** March 17, 2026  
+**Status:** Active & Maintained
+
+---
+
+*"Empowering the Chattogram community with real-time fuel information"*
